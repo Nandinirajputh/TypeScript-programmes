@@ -1,20 +1,37 @@
-function calculatePercentage(total: number, obtained: number): number {
-    return (obtained / total) * 100;
+function isArmstrong(num: number): boolean {
+    let original = num;
+    let sum = 0;
+
+    while (num > 0) {
+        let digit = num % 10;
+        sum += digit * digit * digit;
+        num = Math.floor(num / 10);
+    }
+
+    return original === sum;
 }
-const calculatePercentageArrow = (total: number, obtained: number): number => {
-    return (obtained / total) * 100;
+const isArmstrongArrow = (num: number): boolean => {
+    let original = num;
+    let sum = 0;
+
+    while (num > 0) {
+        let digit = num % 10;
+        sum += digit * digit * digit;
+        num = Math.floor(num / 10);
+    }
+
+    return original === sum;
 };
-const greetStudent = (name: string): string => {
-    return `Welcome, ${name}!`;
+const displayResult = (num: number): void => {
+    console.log(
+        `${num} ${isArmstrongArrow(num) ? "is" : "is not"} an Armstrong Number`
+    );
 };
 
-const totalMarks: number = 600;
-const obtainedMarks: number = 540;
+// Function Calls
+console.log(`153: ${isArmstrong(153)}`);
+console.log(`123: ${isArmstrong(123)}`);
 
-console.log(greetStudent("Nandini"));
-
-const percentage1 = calculatePercentage(totalMarks, obtainedMarks);
-console.log(`Percentage (Normal Function): ${percentage1}%`);
-
-const percentage2 = calculatePercentageArrow(totalMarks, obtainedMarks);
-console.log(`Percentage (Arrow Function): ${percentage2}%`);
+displayResult(370);
+displayResult(407);
+displayResult(250);
