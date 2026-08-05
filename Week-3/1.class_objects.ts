@@ -1,40 +1,48 @@
-class Employee {
-    employeeName: string;
-    employeeId: number;
-    salary: number;
-    bonusPercentage: number;
+class ArmstrongChecker {
+    number: number;
 
-    constructor(name: string, id: number, salary: number, bonus?: number) {
-        this.employeeName = name;
-        this.employeeId = id;
-        this.salary = salary;
-        this.bonusPercentage = bonus ?? 10;
+    constructor(num: number) {
+        this.number = num;
     }
 
-    calculateTotalSalary(): number {
-        const bonusAmount = (this.salary * this.bonusPercentage) / 100;
-        return this.salary + bonusAmount;
+    checkArmstrong(): boolean {
+        let original = this.number;
+        let temp = this.number;
+        let sum = 0;
+
+        while (temp > 0) {
+            let digit = temp % 10;
+            sum += digit * digit * digit;
+            temp = Math.floor(temp / 10);
+        }
+
+        return original === sum;
     }
 
-    displayDetails(): void {
-        console.log("------ Employee Details ------");
-        console.log(`Employee Name: ${this.employeeName}`);
-        console.log(`Employee ID: ${this.employeeId}`);
-        console.log(`Salary: ${this.salary}`);
-        console.log(`Bonus Percentage: ${this.bonusPercentage}%`);
-        console.log(`Total Salary: ${this.calculateTotalSalary()}`);
+    displayResult(): void {
+        console.log("------ Armstrong Number ------");
+        console.log(`Number: ${this.number}`);
+
+        if (this.checkArmstrong()) {
+            console.log(`${this.number} is an Armstrong Number.`);
+        } else {
+            console.log(`${this.number} is not an Armstrong Number.`);
+        }
+
         console.log("------------------------------\n");
     }
 }
 
-const employee1 = new Employee("Ravi", 101, 40000);
-const employee2 = new Employee("Sneha", 102, 55000, 15);
+const num1 = new ArmstrongChecker(153);
+const num2 = new ArmstrongChecker(123);
 
-employee1.displayDetails();
-employee2.displayDetails();
+num1.displayResult();
+num2.displayResult();
 
-employee2.salary = 60000;
+num2.number = 370;
 
 console.log(
-    `Updated Total Salary for ${employee2.employeeName}: ${employee2.calculateTotalSalary()}`
+    `After Updating Number: ${num2.number} -> ${
+        num2.checkArmstrong() ? "Armstrong Number" : "Not an Armstrong Number"
+    }`
 );
