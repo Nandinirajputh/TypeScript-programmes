@@ -1,42 +1,51 @@
-class BankAccount {
-    public accountHolder: string;
-    private balance: number;
-    private pin: number;
-    protected transactionCount: number = 0;
+class Armstrong {
+    public number: number;
+    private result: number = 0;
+    protected digits: number = 0;
 
-    constructor(name: string, balance: number, pin: number) {
-        this.accountHolder = name;
-        this.balance = balance;
-        this.pin = pin;
+    constructor(num: number) {
+        this.number = num;
     }
 
-    public deposit(amount: number, enteredPin: number): void {
-        if (this.verifyPin(enteredPin)) {
-            this.balance += amount;
-            this.transactionCount++;
-            console.log(`₹${amount} deposited successfully.`);
-            console.log(`Current Balance: ₹${this.balance}`);
+    public checkArmstrong(): void {
+        let temp = this.number;
+        let original = this.number;
+
+        while (temp > 0) {
+            this.digits++;
+            temp = Math.floor(temp / 10);
+        }
+
+        temp = original;
+        this.result = 0;
+
+        while (temp > 0) {
+            let digit = temp % 10;
+            this.result += Math.pow(digit, this.digits);
+            temp = Math.floor(temp / 10);
+        }
+
+        if (this.verify()) {
+            console.log(`${original} is an Armstrong Number.`);
         } else {
-            console.log("Incorrect PIN. Deposit failed.");
+            console.log(`${original} is not an Armstrong Number.`);
         }
     }
 
-    private verifyPin(pin: number): boolean {
-        return this.pin === pin;
+    private verify(): boolean {
+        return this.result === this.number;
     }
 }
 
-class PremiumBankAccount extends BankAccount {
-    public showTransactions(): void {
-        console.log(`Total Transactions: ${this.transactionCount}`);
+class ArmstrongDetails extends Armstrong {
+    public showDigits(): void {
+        console.log(`Number of Digits: ${this.digits}`);
     }
 }
 
-const account = new BankAccount("Akhil", 10000, 1234);
+const num1 = new Armstrong(153);
+num1.checkArmstrong();
 
-console.log(`Welcome, ${account.accountHolder}!`);
-account.deposit(2500, 1234);
-
-const premium = new PremiumBankAccount("Priya", 20000, 5678);
-premium.deposit(3000, 5678);
-premium.showTransactions();
+const num2 = new ArmstrongDetails(9474);
+num2.checkArmstrong();
+num2.showDigits();
