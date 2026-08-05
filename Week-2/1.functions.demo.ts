@@ -1,27 +1,32 @@
-function getStudent(name: string): string {
-    return `Student Name: ${name}`;
+function isArmstrong(num: number): boolean {
+    let original = num;
+    let sum = 0;
+    while (num > 0) {
+        let digit = num % 10;
+        sum += digit * digit * digit;
+        num = Math.floor(num / 10);
+    }
+    return original === sum;
 }
-function getDepartment(dept: string = "AIML"): string {
-    return `Department: ${dept}`;
-}
-function studentDetails(id: number, section?: string): void {
-    console.log(`Student ID: ${id}`);
-
-    if (section) {
-        console.log(`Section: ${section}`);
+function checkNumber(num: number = 153): void {
+    if (isArmstrong(num)) {
+        console.log(`${num} is an Armstrong Number.`);
+    } else {
+        console.log(`${num} is not an Armstrong Number.`);
     }
 }
-function calculateAverage(...marks: number[]): number {
-    const total = marks.reduce((sum, mark) => sum + mark, 0);
-    return total / marks.length;
+function displayNumber(num: number, message?: string): void {
+    console.log(`Number: ${num}`);
+    if (message) {
+        console.log(`Message: ${message}`);
+    }
 }
-console.log(getStudent("Nandini"));
+const cube = (n: number): number => n * n * n;
+checkNumber();
+checkNumber(370);
+checkNumber(123);
 
-console.log(getDepartment());
-console.log(getDepartment("CSE"));
+displayNumber(153);
+displayNumber(370, "Valid Armstrong Number");
 
-studentDetails(101);
-studentDetails(102, "A");
-
-const average = calculateAverage(85, 90, 88, 92);
-console.log(`Average Marks: ${average}`);
+console.log(`Cube of 5: ${cube(5)}`);
