@@ -1,33 +1,44 @@
-class Student {
-    public static readonly collegeName: string = "SVECW Engineering College";
-    public static totalStudents: number = 0;
+class Armstrong {
+    public static readonly programName: string = "Armstrong Number Checker";
+    public static totalChecks: number = 0;
 
-    public readonly rollNumber: string;
-    public studentName: string;
+    public readonly number: number;
 
-    constructor(name: string, rollNo: string) {
-        this.studentName = name;
-        this.rollNumber = rollNo;
-        Student.totalStudents++;
+    constructor(num: number) {
+        this.number = num;
+        Armstrong.totalChecks++;
     }
 
-    public static showCollegeInfo(): void {
-        console.log(`Welcome to ${Student.collegeName}`);
+    public static showProgramInfo(): void {
+        console.log(`Program: ${Armstrong.programName}`);
     }
 
-    public displayStudent(): void {
-        console.log(`Student Name: ${this.studentName}`);
-        console.log(`Roll Number: ${this.rollNumber}`);
+    public displayResult(): void {
+        let temp = this.number;
+        let sum = 0;
+        const digits = this.number.toString().length;
+
+        while (temp > 0) {
+            const digit = temp % 10;
+            sum += Math.pow(digit, digits);
+            temp = Math.floor(temp / 10);
+        }
+
+        if (sum === this.number) {
+            console.log(`${this.number} is an Armstrong Number`);
+        } else {
+            console.log(`${this.number} is not an Armstrong Number`);
+        }
     }
 }
 
-console.log(Student.collegeName);
-Student.showCollegeInfo();
+console.log(Armstrong.programName);
+Armstrong.showProgramInfo();
 
-const student1 = new Student("Anjali", "22A91A0501");
-const student2 = new Student("Rohit", "22A91A0502");
+const num1 = new Armstrong(153);
+const num2 = new Armstrong(9474);
 
-student1.displayStudent();
-student2.displayStudent();
+num1.displayResult();
+num2.displayResult();
 
-console.log(`Total Students: ${Student.totalStudents}`);
+console.log(`Total Checks: ${Armstrong.totalChecks}`);
