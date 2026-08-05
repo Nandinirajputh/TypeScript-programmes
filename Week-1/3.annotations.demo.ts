@@ -17,4 +17,4 @@ const summary: string = getLibraryInfo(libraryName, totalBooks);
 
 console.log(summary);
 console.log(`Book Categories: ${categories.join(", ")}`);
-console.log(`Library Open: ${isOpen ? "Yes" : "No"}`);ts
+console.log(`Library Open: ${isOpen ? "Yes" : "No"}`);
