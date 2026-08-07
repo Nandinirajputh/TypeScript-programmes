@@ -1,7 +1,6 @@
-function printValue<T>(value: T): void {
-    console.log(value);
+function printData<T>(data: T): void {
+    console.log(data);
 }
 
-printValue<number>(153);
-printValue<string>("Armstrong Number");
-printValue<boolean>(true);
+printData<string>("Employee");
+printData<number>(101);

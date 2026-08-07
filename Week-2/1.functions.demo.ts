@@ -1,32 +1,25 @@
-function isArmstrong(num: number): boolean {
-    let original = num;
-    let sum = 0;
-    while (num > 0) {
-        let digit = num % 10;
-        sum += digit * digit * digit;
-        num = Math.floor(num / 10);
-    }
-    return original === sum;
+
+function displayEmployee(name: string, salary: number): void {
+    console.log("Employee Name: " + name);
+    console.log("Salary: " + salary);
 }
-function checkNumber(num: number = 153): void {
-    if (isArmstrong(num)) {
-        console.log(`${num} is an Armstrong Number.`);
+function yearlySalary(monthlySalary: number): number {
+    return monthlySalary * 12;
+function isEligible(salary: number): boolean {
+    if (salary >= 30000) {
+        return true;
     } else {
-        console.log(`${num} is not an Armstrong Number.`);
+        return false;
     }
 }
-function displayNumber(num: number, message?: string): void {
-    console.log(`Number: ${num}`);
-    if (message) {
-        console.log(`Message: ${message}`);
-    }
+displayEmployee("Rahul", 35000);
+
+let annual = yearlySalary(35000);
+console.log("Yearly Salary: " + annual);
+
+if (isEligible(35000)) {
+    console.log("Employee is eligible for bonus.");
+} else {
+    console.log("Employee is not eligible for bonus.");
 }
-const cube = (n: number): number => n * n * n;
-checkNumber();
-checkNumber(370);
-checkNumber(123);
-
-displayNumber(153);
-displayNumber(370, "Valid Armstrong Number");
-
-console.log(`Cube of 5: ${cube(5)}`);
+}

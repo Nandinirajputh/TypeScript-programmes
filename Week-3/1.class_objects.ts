@@ -1,48 +1,32 @@
-class ArmstrongChecker {
-    number: number;
+class Student {
+    name: string;
+    marks: number;
 
-    constructor(num: number) {
-        this.number = num;
+    constructor(name: string, marks: number) {
+        this.name = name;
+        this.marks = marks;
     }
 
-    checkArmstrong(): boolean {
-        let original = this.number;
-        let temp = this.number;
-        let sum = 0;
-
-        while (temp > 0) {
-            let digit = temp % 10;
-            sum += digit * digit * digit;
-            temp = Math.floor(temp / 10);
-        }
-
-        return original === sum;
-    }
-
-    displayResult(): void {
-        console.log("------ Armstrong Number ------");
-        console.log(`Number: ${this.number}`);
-
-        if (this.checkArmstrong()) {
-            console.log(`${this.number} is an Armstrong Number.`);
+    checkResult(): string {
+        if (this.marks >= 35) {
+            return "Pass";
         } else {
-            console.log(`${this.number} is not an Armstrong Number.`);
+            return "Fail";
         }
+    }
 
-        console.log("------------------------------\n");
+    displayDetails(): void {
+        console.log(" Student Details ");
+        console.log("Name: " + this.name);
+        console.log("Marks: " + this.marks);
+        console.log("Result: " + this.checkResult());
+        console.log("   ");
     }
 }
-
-const num1 = new ArmstrongChecker(153);
-const num2 = new ArmstrongChecker(123);
-
-num1.displayResult();
-num2.displayResult();
-
-num2.number = 370;
-
-console.log(
-    `After Updating Number: ${num2.number} -> ${
-        num2.checkArmstrong() ? "Armstrong Number" : "Not an Armstrong Number"
-    }`
-);
+const student1 = new Student("Rahul", 80);
+const student2 = new Student("Anita", 25);
+student1.displayDetails();
+student2.displayDetails();
+student2.marks = 60;
+console.log("\nAfter Updating Marks:");
+student2.displayDetails();

@@ -1,10 +1,9 @@
-interface NumberData {
-    number: number;
+interface Person {
+    name: string;
 }
 
-function display<T extends NumberData>(obj: T): void {
-    console.log(`Number: ${obj.number}`);
+function showName<T extends Person>(obj: T): void {
+    console.log("Name:", obj.name);
 }
 
-display({ number: 153 });
-display({ number: 9474 });
+showName({ name: "Nandini" });

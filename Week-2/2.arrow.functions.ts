@@ -1,37 +1,17 @@
-function isArmstrong(num: number): boolean {
-    let original = num;
-    let sum = 0;
 
-    while (num > 0) {
-        let digit = num % 10;
-        sum += digit * digit * digit;
-        num = Math.floor(num / 10);
-    }
-
-    return original === sum;
+function getStudent(name: string): string {
+    return "Student Name: " + name;
 }
-const isArmstrongArrow = (num: number): boolean => {
-    let original = num;
-    let sum = 0;
-
-    while (num > 0) {
-        let digit = num % 10;
-        sum += digit * digit * digit;
-        num = Math.floor(num / 10);
-    }
-
-    return original === sum;
-};
-const displayResult = (num: number): void => {
-    console.log(
-        `${num} ${isArmstrongArrow(num) ? "is" : "is not"} an Armstrong Number`
-    );
+const getMarks = (marks: number): string => {
+    return "Marks: " + marks;
 };
 
-// Function Calls
-console.log(`153: ${isArmstrong(153)}`);
-console.log(`123: ${isArmstrong(123)}`);
+const displayStudent = (name: string, marks: number): void => {
+    console.log(getStudent(name));
+    console.log(getMarks(marks));
+};
+console.log(getStudent("Ravi"));
+console.log(getMarks(85));
 
-displayResult(370);
-displayResult(407);
-displayResult(250);
+displayStudent("Anu", 92);
+displayStudent("Kiran", 78);

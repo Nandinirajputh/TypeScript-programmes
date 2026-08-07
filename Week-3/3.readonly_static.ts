@@ -1,44 +1,22 @@
-class Armstrong {
-    public static readonly programName: string = "Armstrong Number Checker";
-    public static totalChecks: number = 0;
+class Book {
+    static libraryName: string = "City Library";
+    readonly bookId: number;
 
-    public readonly number: number;
+    title: string;
 
-    constructor(num: number) {
-        this.number = num;
-        Armstrong.totalChecks++;
+    constructor(id: number, title: string) {
+        this.bookId = id;
+        this.title = title;
     }
 
-    public static showProgramInfo(): void {
-        console.log(`Program: ${Armstrong.programName}`);
-    }
-
-    public displayResult(): void {
-        let temp = this.number;
-        let sum = 0;
-        const digits = this.number.toString().length;
-
-        while (temp > 0) {
-            const digit = temp % 10;
-            sum += Math.pow(digit, digits);
-            temp = Math.floor(temp / 10);
-        }
-
-        if (sum === this.number) {
-            console.log(`${this.number} is an Armstrong Number`);
-        } else {
-            console.log(`${this.number} is not an Armstrong Number`);
-        }
+    display(): void {
+        console.log("Book ID: " + this.bookId);
+        console.log("Book Title: " + this.title);
     }
 }
 
-console.log(Armstrong.programName);
-Armstrong.showProgramInfo();
-
-const num1 = new Armstrong(153);
-const num2 = new Armstrong(9474);
-
-num1.displayResult();
-num2.displayResult();
-
-console.log(`Total Checks: ${Armstrong.totalChecks}`);
+console.log(Book.libraryName);
+const book1 = new Book(101, "Python");
+const book2 = new Book(102, "TypeScript");
+book1.display();
+book2.display();

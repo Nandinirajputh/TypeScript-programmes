@@ -1,51 +1,30 @@
-class Armstrong {
-    public number: number;
-    private result: number = 0;
-    protected digits: number = 0;
+class Employee {
+    public name: string;
+    private salary: number;
+    protected company: string;
 
-    constructor(num: number) {
-        this.number = num;
+    constructor(name: string, salary: number) {
+        this.name = name;
+        this.salary = salary;
+        this.company = "ABC Company";
     }
 
-    public checkArmstrong(): void {
-        let temp = this.number;
-        let original = this.number;
-
-        while (temp > 0) {
-            this.digits++;
-            temp = Math.floor(temp / 10);
-        }
-
-        temp = original;
-        this.result = 0;
-
-        while (temp > 0) {
-            let digit = temp % 10;
-            this.result += Math.pow(digit, this.digits);
-            temp = Math.floor(temp / 10);
-        }
-
-        if (this.verify()) {
-            console.log(`${original} is an Armstrong Number.`);
-        } else {
-            console.log(`${original} is not an Armstrong Number.`);
-        }
-    }
-
-    private verify(): boolean {
-        return this.result === this.number;
+    public showDetails(): void {
+        console.log("Employee Name: " + this.name);
+        console.log("Salary: " + this.salary);
     }
 }
 
-class ArmstrongDetails extends Armstrong {
-    public showDigits(): void {
-        console.log(`Number of Digits: ${this.digits}`);
+class Manager extends Employee {
+    public showCompany(): void {
+        console.log("Company: " + this.company);
     }
 }
 
-const num1 = new Armstrong(153);
-num1.checkArmstrong();
+// Creating Objects
+const emp1 = new Employee("Rahul", 30000);
+emp1.showDetails();
 
-const num2 = new ArmstrongDetails(9474);
-num2.checkArmstrong();
-num2.showDigits();
+const emp2 = new Manager("Anita", 50000);
+emp2.showDetails();
+emp2.showCompany();
